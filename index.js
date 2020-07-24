@@ -101,6 +101,27 @@ console.log(notice("Notice"));
 var msg = clc.xterm(202).bgXterm(236);
 console.log(msg("Orange text on dark gray background"));*/
 
+//console.log('hola')
+
+let fs = require('fs')
+let referencesLinks = /\((http[^)]+)\)/g
+
+//const readSaveLinks = () => {
+  console.log('hola')
+  //return new Promise((resolve,reject) => {
+fs.readFile('README.md','utf-8',(err,data) => {
+  if(err){
+    //reject(err);
+  }else{
+    console.log(data)
+    let linksArchive = []
+    const allLinks = data.match(referencesLinks)
+    allLinks.forEach(obj=>{
+      linksArchive.push(obj.replace(/[\[\(\)\]]/g, ''))
+    })
+    console.log(linksArchive);
+  }
+});
 
 
 
@@ -108,3 +129,18 @@ console.log(msg("Orange text on dark gray background"));*/
 
 
 
+
+
+/*const readline = require("readline"),
+    fs = require("fs"),
+    NOMBRE_ARCHIVO = "README.md";
+
+let lector = readline.createInterface({
+    input: fs.createReadStream(NOMBRE_ARCHIVO)
+});
+
+lector.on("line", linea => {
+
+
+    console.log("Tenemos una línea:", linea);
+});*/
