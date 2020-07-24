@@ -28,5 +28,10 @@
   "homepage": "https://github.com/Niamoyano91/SCL013-md-links#readme",
   "devDependencies": {
     "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cli-color": "^2.0.0",
+    "colors": "^1.4.0"
   }
 }
