@@ -101,19 +101,62 @@ console.log(notice("Notice"));
 var msg = clc.xterm(202).bgXterm(236);
 console.log(msg("Orange text on dark gray background"));*/
 
-//console.log('hola')
+console.log(process.argv);
 
-let fs = require('fs')
-let referencesLinks = /\((http[^)]+)\)/g
+let file = process.argv[2];
+const fs = require('fs');
+const referencesLinks = /\((http[^)]+)\)/g;
+const colors = require('colors');
+const path = require("path");
 
-//const readSaveLinks = () => {
-  console.log('hola')
-  //return new Promise((resolve,reject) => {
-fs.readFile('README.md','utf-8',(err,data) => {
+
+const searchMd = (file, options) => {
+
+if(path.extname(file) === '.md') {//El método path.extname () devuelve la extensión de una ruta de archivo.
+route = path.resolve(file)//guardamos la ruta
+route = path.normalize(file)
+console.log(route);
+return route
+}else{
+  console.log('Tu directorio no contiene archivos MD');
+}
+
+}
+
+searchMd(file)
+
+/*fs.readdir(path, (err,archivos) => {
+  archivos.forEach(archivo => {
+    if(archivo.includes('md') {
+      console.log(archivo)
+    
+    }
+  })
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const readSaveLinks = () => {
+  //console.log('hola')
+return new Promise((resolve,reject) => {
+fs.readFile(path,'utf-8',(err,data) => {
   if(err){
-    //reject(err);
+    console.log(err)
   }else{
-    console.log(data)
+    //console.log(data)
+    //console.log(path)
     let linksArchive = []
     const allLinks = data.match(referencesLinks)
     allLinks.forEach(obj=>{
@@ -121,7 +164,29 @@ fs.readFile('README.md','utf-8',(err,data) => {
     })
     console.log(linksArchive);
   }
-});
+})
+})
+}
+readSaveLinks()*/
+
+
+
+/*const colors = require('colors');
+const fs = require('fs');
+
+
+const read = (path) => {
+  fs.readFile('./README.md', 'utf-8', (err, data) => {
+    if (err) {
+      console.log(err)
+    }
+    console.log('Archivo leído'.rainbow);
+    console.log(data.toString());
+    return data;
+  })
+}
+
+read('hola')*/
 
 
 
@@ -131,16 +196,9 @@ fs.readFile('README.md','utf-8',(err,data) => {
 
 
 
-/*const readline = require("readline"),
-    fs = require("fs"),
-    NOMBRE_ARCHIVO = "README.md";
-
-let lector = readline.createInterface({
-    input: fs.createReadStream(NOMBRE_ARCHIVO)
-});
-
-lector.on("line", linea => {
 
 
-    console.log("Tenemos una línea:", linea);
-});*/
+
+
+
+
