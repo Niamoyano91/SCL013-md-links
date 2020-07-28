@@ -1,5 +1,8 @@
+console.log(process.argv);
+console.log(process.argv[2]);
+
 //module.exports = () => {
-  // ...
+// ...
 //}
 /*const colors = require('colors')
 const fs = require('fs');
@@ -101,46 +104,66 @@ console.log(notice("Notice"));
 var msg = clc.xterm(202).bgXterm(236);
 console.log(msg("Orange text on dark gray background"));*/
 
-console.log(process.argv);
+//console.log(process.argv);
+//console.log(process.argv[1]);
 
-let file = process.argv[2];
+
+
+let route = process.argv[2];
+
 const fs = require('fs');
-const referencesLinks = /\((http[^)]+)\)/g;
+//const referencesLinks = /\((http[^)]+)\)/g;
 const colors = require('colors');
 const path = require("path");
+//console.log(path.resolve(route));
 
 
-const searchMd = (file, options) => {
+//FUNCION VALIDAR LO QUE INGRESA EL USUARIO EN LA TERMINAL//
+const validateInput = () =>{
+  console.log('1');
+  if((process.argv[2] === undefined)){
+    let route = __dirname;
+    console.log('ENTRO')//BORRAR
+    return route;
+  }if((process.argv[2] === './')){
+    let route = __dirname;
+    console.log('ENTRO2')//BORRAR
+    return route;
+  }if (path.extname(process.argv[2]) === '.md'){
+  console.log('es un archivo extension .md')//BORRAR
+  }else{
+    console.log('Ingresa un directorio o archivo valido'.rainbow)
+  }
+}
+validateInput();
 
-if(path.extname(file) === '.md') {//El método path.extname () devuelve la extensión de una ruta de archivo.
-route = path.resolve(file)//guardamos la ruta
-route = path.normalize(file)
-console.log(route);
-return route
-}else{
-  console.log('Tu directorio no contiene archivos MD');
+//funcion que entra en la carpeta//
+/*const enterFolder = (route) => {
+  return new Promise((resolve, reject) => {
+    fs.readdir(route, (err, files) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(files)
+      }
+    })
+  });
 }
 
-}
-
-searchMd(file)
-
-/*fs.readdir(path, (err,archivos) => {
-  archivos.forEach(archivo => {
-    if(archivo.includes('md') {
+//Funcion que busca el archivo extension .md//
+const searchMd = () => {
+  enterFolder(path.resolve()).then(archivos => {
+    console.log(archivos);
+    archivos.forEach((archivo)=> {
+    if(path.extname(archivo) === '.md'){
       console.log(archivo)
-    
+    }else {
+      console.log('El directorio no contiene archivos extension .md')
     }
   })
-}*/
-
-
-
-
-
-
-
-
+  })
+}
+  searchMd();*/
 
 
 
@@ -187,18 +210,4 @@ const read = (path) => {
 }
 
 read('hola')*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
