@@ -33,6 +33,7 @@
     "ascii-art": "^2.5.0",
     "chalk": "^4.1.0",
     "cli-color": "^2.0.0",
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "node-fetch": "^2.6.0"
   }
 }
