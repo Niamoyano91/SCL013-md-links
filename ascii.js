@@ -1,5 +1,6 @@
 const colors = require('colors');
 const { rainbow } = require('cli-color/beep');
+const figlet = require ('figlet')
 
 const mona = [
     "         ____",
@@ -42,28 +43,13 @@ const mona = [
       "===`-.`___`-.__\\ \\___  /__.-'_.'_.-'===",
       "                `=--=-'    "
       ]
-
-    console.log(buda,"Welcome Dev".rainbow);
-    console.log(".oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.".rainbow)
-
-    const fractal = [ 
-    "  |   \      ____        / |",
-    "  __    |    \    /\   |      /  ;",
-    " /\  \  |     \  /  \  |     /  ;",
-    "/,'\  \ |      \/  : \ |    /   ;",
-    "~  ;   \|      /   :  \|   /   ;",
-    "   |    \     /   :'  |   /    ;",
-    "   |     \   /    :   |  /    ;",
-    "   |      \ /    :'   | /     ;",
-    "   |       /     :    |/     ;",
-    "   |      /     :'    |      ;",
-    "    \    /      :     |     ;",
-    "     \  /      :'     |     ;",
-    "      \       :'      |    ;",
-    "       \______:_______|___;",
-    ]
-    
-console.log(fractal)
+      console.log(".oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.".rainbow)
+    console.log(buda);
+    figlet('Welcome Dev',{
+  
+  },(err,result)=>{
+      console.log(err || result)
+  });
 
 const asciify = require('asciify-image');
 
@@ -74,7 +60,7 @@ const options = {
   align: 'center'
 }
 
-asciify('https://raw.githubusercontent.com/Carlareneedc/SCL013-burger-queen/master/src/assets/images/logo.png', options, function (err, asciified) {
+asciify('./img/logomdlinks.png', options, function (err, asciified) {
   if (err) throw err;
 
   // Print to console
