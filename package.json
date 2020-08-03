@@ -36,6 +36,7 @@
     "cli-color": "^2.0.0",
     "colors": "^1.4.0",
     "figlet": "^1.5.0",
-    "lolcat": "^1.0.0"
+    "lolcat": "^1.0.0",
+    "node-fetch": "^2.6.0"
   }
 }

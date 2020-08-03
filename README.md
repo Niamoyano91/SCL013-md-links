@@ -25,7 +25,7 @@ Es por lo anterior, que nuestro cliente nos ha encargado generar una solución a
 
 De acuerdo a las necesidades de nuestro cliente y nuestros usuarios, construimos el siguiente diagrama de flujo, lo que nos permite dar funcionalidad a nuestra librería.
 
-[ACÁ EL DIAGRAMA DE FLUJO]
+![diagrama](/img/diagrama.jpg)
 
 
 ## 3. ¿Cómo funciona?
