@@ -16,13 +16,13 @@
 
 ## 1. MD linkS
 
-MD linkS es una librería diseñada para developers, cuyo objetivo es leer archivos de lenguaje de marcado o [Markdown](https://es.wikipedia.org/wiki/Markdown). Es muy común utilizar o inspeccionar este tipo de archivos, ya que es utilizado en multiples plataformas que manejan texto plano tales como Github entre otros.
+MD linkS es una librería diseñada para developers, cuyo objetivo es leer archivos de lenguaje de marcado o [Markdown](https://es.wikipedia.org/wiki/Markdown). Es muy común utilizar o inspeccionar este tipo de archivos, ya que existen en multiples plataformas que manejan texto plano tales como Github entre otros.
 
 ## 2. Construcción del proyecto
 
-Normalmente los archivos de texto plano **"Markdown"** contienen vínculos o links que nos llevan a otras páginas que contienen información importante a la que podemos acceder. Un ejemplo clásico de este lenguaja es nuestro típico **"README.md"**. Muchas veces estos vínculos están rotos o ya no son válidos, lo que puede perjudicar el acceso a la información antes mencionada y provocar una experiencia insastifactoria y demorar el trabajo del developer.
+Normalmente los archivos de texto plano **"Markdown"** contienen vínculos o links que nos llevan a otras páginas y que pueden incluir información importante a la que podemos acceder. Un ejemplo clásico de este lenguaje es nuestro típico **"README.md"**. Muchas veces estos vínculos están rotos o ya no son válidos, esto perjudica el acceso a la información antes mencionada y provoca una experiencia insastifactoria y demora el trabajo del developer.
 
-Es por esto, que nuestro cliente nos ha encargado generar una solución ante este posible problema. Para esto, utilizamos una importante herramienta muy utilizada en el mundo de la programación.[Node.js](https://nodejs.org/)permite que podamos leer y analizar el formato **"Markdown"**, verificar links y hacer reporte de estadísticas. Para esto, utilizaremos JavaScript, lo que nos permitirá interactuar directamente con el sistema de archivos y redes.
+Es por lo anterior, que nuestro cliente nos ha encargado generar una solución ante este posible problema. Para esto utilizaremos una importante herramienta para el mundo de la programación.[Node.js](https://nodejs.org/) permite que podamos leer y analizar el formato **"Markdown"**, verificar links y hacer reporte de estadísticas. 
 
 De acuerdo a las necesidades de nuestro cliente y nuestros usuarios, construimos el siguiente diagrama de flujo, lo que nos permite dar funcionalidad a nuestra librería.
 
