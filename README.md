@@ -1,6 +1,5 @@
 ![mdlogo](/img/logomdlinks.png)
 
-## Índice
 
 * [1. MD linkS](#1md)
 * [2. Construcción del proyecto](#2-construcción)
@@ -339,7 +338,7 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 * [Crear módulos en Node.js](https://docs.npmjs.com/getting-started/publishing-npm-packages)
 * [Leer un archivo](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback)
 * [Leer un directorio](https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)
-* [Path](https://nodejs.org/api/path.html)
+* [Path](https://nodejs.org/api/pathhdsh.html)
 * [Linea de comando CLI](https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e)
 
 ## 9. Checklist

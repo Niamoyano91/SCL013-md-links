@@ -7,10 +7,14 @@
 //let route = process.argv[2];
 
 const fs = require('fs');
-const referencesLinks = /\[.*(http[^)]+)\)/g;
+const referencesLinks = /\[([^\]]*)\]\(([^)]*)\)/g;
 const colors = require('colors');
 const path = require("path");
 const chalk = require('chalk')
+//const fetch = require('fetch');
+//const fetchUrl = fetch.fetchUrl;
+const fetch = require("node-fetch");
+
 //console.log(path.resolve(route));
 
 
@@ -72,15 +76,27 @@ const enterFolder = (route) => {
 //Funcion que busca el archivo extension .md//
 const searchMd = () => {
   enterFolder(path.resolve()).then(archivos => {
-    console.log(archivos);
-    archivos.forEach((file) => {
-      if (path.extname(file) === '.md') {
-        readSaveLinks(file)
+    archivos.forEach((archivo) => {
+      if (path.extname(archivo) === '.md') {
+        readSaveLinks(archivo)
       }
     })
   })
 }
 searchMd();
+
+/*const linkUrl = (url) => {
+  return new Promise((resolve, reject) => {
+    fetchUrl(url, (err, meta, body) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(meta)
+      }
+    })
+  })
+};*/
+
 
 
 //Funcion que extrae links//
@@ -88,19 +104,91 @@ const linksArchive = []
 const readSaveLinks = (e) => {
   return new Promise((resolve, reject) => {
     fs.readFile(e, 'utf-8', (err, data) => {
-      const allLinks = data.match(referencesLinks)
-      console.log(allLinks)
+      const allLinks = data.match(referencesLinks);
       allLinks.forEach(obj => {
         linksArchive.push({
-          href: obj.replace(/^'\[(.*?)\]/g),
-          text: obj.replace(/(?:https):\/\/(?:[^\/\r\n]+)(\/[^\r\n]*)?/g)
-        }
-        )
+          href: obj.split('](')[1].slice(0, -1),
+          text: obj.split('](')[0].slice(1),
+          file: e
+        })
       })
-      console.log(linksArchive);
+      console.log(validate(linksArchive))
+     
+      /*linksArchive.map(actualLink => {
+        console.log(actualLink.href)
+        fetch(actualLink.href)
+          .then(response => {
+            if( response.status === 200){
+              console.log( actualLink.href + ' ' + response.statusText + ' ' + response.status)
+            }else{
+              console.log( actualLink.href + ' ' + response.statusText + ' ' + response.status)
+
+            }
+
+
+          })
+      })*/
     })
   })
 }
+
+const validate = (links) =>{
+  links.map(actualLink => {
+    console.log(actualLink.href)
+    fetch(actualLink.href)
+      .then(response => {
+        if( response.status === 200){
+          console.log( 'Link: '+actualLink.href + ' ' +'Estado: '+ response.statusText + ' ' + response.status)
+        }else{
+          console.log( 'Link: '+actualLink.href + ' ' +'Estado: '+ response.statusText + ' ' + response.status)
+
+        }
+
+
+      })
+  })
+}
+
+
+
+
+
+/* const nameFile = data
+ .match(referencesLinks)
+ .map((obj) => console.log(obj.split('](')[0].slice(1)));
+ const link = data
+ .match(referencesLinks)
+ .map((obj) => console.log(obj.split('](')[1].slice(0, -1)));
+ link.forEach((linkk, j) =>
+ arrayInfo.push({
+   href: linkk,
+   text: nameFile[j],
+   file: e
+ })
+ )
+ console.log(arrayInfo)*/
+
+
+
+/*allLinks.forEach(links => {
+  linksArchive.push(links.replace(/[\[\(\)\]]/g, ''))
+  })
+  console.log(linksArchive);
+  linksArchive
+  linksArchive.map(url => {
+    linkUrl(url)
+  .then(checkedStatus => {
+    if(checkedStatus.status === 200){
+      console.log(url.split(0, 51), ' OK ', checkedStatus.status)
+    }else{
+      console.log(url.split(0, 51), ' FAIL ', checkedStatus.status)
+
+    }
+  })
+}) */
+
+
+
 
 
 
