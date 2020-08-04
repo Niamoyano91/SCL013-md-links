@@ -53,13 +53,13 @@ const log = console.log;
 // Combine styled and normal strings
 log(chalk.blue('Hello') + ' World' + chalk.red('!'));
 // Compose multiple styles using the chainable API
-log(chalk.blue.bgRed.bold('Hello world!'));
+log(chalk.blue.bg.bold('Hello world!'));
 // Pass in multiple arguments
 log(chalk.blue('Hello', 'World!', 'Foo', 'bar', 'biz', 'baz'));
 // Nest styles
 log(chalk.red('Hello', chalk.underline.bgBlue('world') + '!'));
 // Nest styles of the same type even (color, underline, background)
-log(chalk.green(
+log(chalk.white(
 'I am a green line ' +
 chalk.blue.underline.bold('with a blue substring') +
 ' that becomes green again!'
@@ -85,3 +85,21 @@ console.log(warn("Warning"));
 console.log(notice("Notice"));
 var msg = clc.xterm(202).bgXterm(236);
 console.log(msg("Orange text on dark gray background"));
+
+console.log (chalk.keyword('orange')("          ____"));
+console.log (chalk.keyword('orange')("       o8%8888,                           .-----."));
+console.log (chalk.keyword('orange')("     o88%8888888.                       .'       `."));
+console.log (chalk.keyword('orange')("    8'-    -:8888b                     .'..    :. `."));
+console.log (chalk.keyword('orange')("   8'         8888                    .'           |"));
+console.log (chalk.keyword('orange')("  d8.-=. ,==-.:888b                   |.-=. ,==-.: |"));
+console.log (chalk.keyword('orange')("  >8 `~` :`~' d8888                   | `~` :`~'   :"));
+console.log (chalk.keyword('orange')("  88         ,88888                    `.        , :"));
+console.log (chalk.keyword('orange')("  88b. `-~  ':88888                     `. `-~  '::|"));
+console.log (chalk.keyword('orange')("  888b v=v~ .:88888                      `.~==~ .::|"));
+console.log (chalk.keyword('orange')("  88888o--:':::8888                        `--:'::::"));
+console.log (chalk.keyword('orange')("  `88888| :::' 8888b                       | :::' `."));
+console.log (chalk.keyword('orange')("  8888^^'       8888b                 _.-'           "));
+console.log (chalk.keyword('orange')(" d888           ,%888b.            .':                `.."));
+console.log (chalk.keyword('orange')("d88%            %%%8--'-.         / .'               .--'-."));
+console.log (chalk.keyword('orange')("/88:.__ ,       _%-' ---  -       /  :.__ ,       _%-' ---  -"));
+console.log (chalk.keyword('orange')("'''::===..-'   =  --.  `          '''::===..-'   =  --.  `"));

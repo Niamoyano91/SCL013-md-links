@@ -1,9 +1,5 @@
-
 //console.log(process.argv);
 //console.log(process.argv[1]);
-
-
-
 //let route = process.argv[2];
 
 const fs = require('fs');
@@ -23,37 +19,56 @@ const validateInput = () => {
   if ((process.argv[2] === undefined)) {
     let route = __dirname;
  
-    console.log(chalk.keyword('orange')('No igresaste nada, pero nuestra librería se ejecutó por defecto'))//BORRAR
-     
-    console.log(chalk.keyword('red')("   /////////////\\\\ "));
-    console.log(chalk.keyword('red')("  (((((((((((((( \\\\"));
-    console.log(chalk.keyword('red')(" ))) ~~      ~~  ((("));
-    console.log(chalk.keyword('red')(" ((( (*)     (*) )))"));
-    console.log(chalk.keyword('red')(" )))     <       ((("));
-    console.log(chalk.keyword('red')(" ((( '\______/`   )))"));
-    console.log(chalk.keyword('red')(" )))\___________/ ((("));
-    console.log(chalk.keyword('red')("        _) (_       "));
-    console.log(chalk.keyword('red')("       / \_/ \      "));
-    console.log(chalk.keyword('red')("      /(     )\     "));
-    console.log(chalk.keyword('red')("     // )___( \\    "));
-    console.log(chalk.keyword('red')("     \\(     )//    "));
-    console.log(chalk.keyword('red')("      (       )     "));
-    console.log(chalk.keyword('red')("       |  |  |      "));
-    console.log(chalk.keyword('red')("        | | |       "));
-    console.log(chalk.keyword('red')("        | | |       "));
-    console.log(chalk.keyword('red')("       _|_|_|_      "));
-    
-    return route;
+    console.log (chalk.keyword('magenta')("               ____"));
+    console.log (chalk.keyword('magenta')("             o8%8888,"));
+    console.log (chalk.keyword('magenta')("           o88%8888888."));
+    console.log (chalk.keyword('magenta')("          8'-    -:8888b"));
+    console.log (chalk.keyword('magenta')("         8'         8888"));
+    console.log (chalk.keyword('magenta')("        d8.-=. ,==-.:888b"));
+    console.log (chalk.keyword('magenta')("        >8 `~` :`~' d8888"));
+    console.log (chalk.keyword('magenta')("        88         ,88888"));
+    console.log (chalk.keyword('magenta')("        88b. `-~  ':88888"));
+    console.log (chalk.keyword('magenta')("        888b ~==~ .+:88888"));
+    console.log (chalk.keyword('magenta')("        88888o--:':::8888"));
+    console.log (chalk.keyword('magenta')("        `88888| :::' 8888b"));
+    console.log (chalk.keyword('magenta')("       d888           ,%888b."));
+    console.log (chalk.keyword('magenta')("      d88%            %%%8--'-."));
+    console.log (chalk.keyword('magenta')("     /88:.__ ,       _%-' ---  -"));
+    console.log (chalk.keyword('magenta')("    '''::===..-'   =  --.  `"));
+
+    console.log (chalk.rgb(238, 19, 111).underline('No ingresaste nada,'));
+    console.log (chalk.rgb(115, 19, 238).bgBlack('pero nuestra librería se ejecutó por defecto'));
+   
+  return route;
   } if ((process.argv[2] === './')) {
-    let route = __dirname;
-    console.log('No ingresaste una ruta específica, pero nuestra librería asume que quisiste entrar a la carpeta actual')//BORRAR
+    let route = __dirname;   
+console.log (chalk.keyword('orange')("                    ____"));
+console.log (chalk.keyword('orange')("                  o8%8888,                           .-----."));
+console.log (chalk.keyword('orange')("                o88%8888888.                       .'       `."));
+console.log (chalk.keyword('orange')("              8'-    -:8888b                     .'..    :. `."));
+console.log (chalk.keyword('orange')("             8'         8888                    .'           |"));
+console.log (chalk.keyword('orange')("            d8.-=. ,==-.:888b                   |.-=. ,==-.: |"));
+console.log (chalk.keyword('orange')("            >8 `~` :`~' d8888                   | `~` :`~'   :"));
+console.log (chalk.keyword('orange')("            88         ,88888                    `.        , :"));
+console.log (chalk.keyword('orange')("            88b. `-~  ':88888                     `. `-~  '::|"));
+console.log (chalk.keyword('orange')("            888b v=v~ .:88888                      `.~==~ .::|"));
+console.log (chalk.keyword('orange')("            88888o--:':::8888                        `--:'::::"));
+console.log (chalk.keyword('orange')("            `88888| :::' 8888b                       | :::' `."));
+console.log (chalk.keyword('orange')("            8888^^'       8888b                 _.-'           "));
+console.log (chalk.keyword('orange')("           d888           ,%888b.            .':                `.."));
+console.log (chalk.keyword('orange')("          d88%            %%%8--'-.         / .'               .--'-."));
+console.log (chalk.keyword('orange')("         /88:.__ ,       _%-' ---  -       /  :.__ ,       _%-' ---  -"));
+console.log (chalk.keyword('orange')("        '''::===..-'   =  --.  `          '''::===..-'   =  --.  `"));
+
+console.log (chalk.rgb(238, 19, 45).underline('No ingresaste una ruta específica,'));
+console.log (chalk.rgb(238, 137, 19).bgBlack('pero nuestra librería asume que quisiste entrar a la carpeta actual'));//BORRAR
     return route;
   } if (path.extname(process.argv[2]) === '.md') {
     let route = process.argv[2]
-    console.log('es un archivo extension .md');//BORRAR
+    console.log('es un archivo extension .md'.rainbow);//BORRAR
     return route;
   } else {
-    console.log('Ingresa ruta de un directorio o archivo valido'.rainbow)
+    console.log(msg('Ingresa ruta de un directorio o archivo valido'));
   }
 }
 validateInput();
