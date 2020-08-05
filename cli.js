@@ -1,40 +1,50 @@
-const searchMd = require('./index')
+const mdLinks = require('./index');
+let validate = require('./index');
+let stats = require('./index');
 const path = require("path");
 const colors = require('colors');
 const chalk = require('chalk');
 
-let stats = false;
-let validate = false;
-let help = false;
 
 
 //funcion que valida lo que ingresa usuario en la terminal//
-
 const flags = () => {
-    if (process.argv.includes('--validate') || process.argv.includes('--v')) {
-        validate = true;
-        stats = false;
-        help = false;
-        searchMd
-        console.log(validate,stats,help)
-        console.log('ENTRO EL FLAGS --V')
-    } if (process.argv.includes('--stats') || process.argv.includes('--s')) {
-        validate = false;
-        stats = true;
-        help = false;
-        console.log('ENTRO EL FLAGS --S')
-    } if ((process.argv.includes('--validate') && process.argv.includes('--status')) || ((process.argv.includes('--v') && process.argv.includes('--s')))) {
-        validate = true;
-        stats = true;
-        help = false;
-        console.log('ENTRO EL FLAGS --S & --V')
-    } if (process.argv.includes('--h') || process.argv.includes('--help')) {
-        help = true;
-        validate = false;
-        stats = false;
-    }    if ((process.argv[2] === './ ')|| (process.argv[2] === undefined)) {
-        let route = __dirname;
-        process.argv[2]= './'
+  if (process.argv.includes('--h') || process.argv.includes('--help')) {
+    help = true;
+    validate = false;
+    stats = false;
+    return
+  } if ((process.argv.includes('--validate') && process.argv.includes('--status')) ||
+    ((process.argv.includes('--v') && process.argv.includes('--s')))) {
+    validate = true;
+    stats = true;
+    help = false;
+    mdLinks.mdLinks(validate, stats).then(A=> console.log(A))
+    console.log('ENTRO EL FLAGS --S & --V')
+    return
+  } if (process.argv.includes('--stats') || process.argv.includes('--s')) {
+    stats = true;
+    validate = false;
+    help = false;
+    mdLinks.mdLinks(validate, stats).then(A=> console.log(A))
+    console.log(validate, stats, help)
+    console.log('ENTRO EL FLAGS --S')
+    return
+  } else if (process.argv.includes('--validate') || process.argv.includes('--v')) {
+    validate = true;
+    stats = false;
+    help = false;
+    console.log(validate)
+    mdLinks.mdLinks(validate, stats).then(A=> console.log(A))
+    console.log(validate, stats, help)
+    console.log('ENTRO EL FLAGS --V')
+    return
+  } else if ((process.argv[2] === './') || (process.argv[2] === undefined)) {
+    validate = false;
+    stats= false;
+    let route = __dirname;
+    process.argv[2] = './'
+    mdLinks.mdLinks(validate, stats).then(A=> console.log(A))
         console.log (chalk.rgb(154, 246, 108)   ("               ____"));
         console.log (chalk.rgb(140, 246, 109)   ("             o8%8888,"));
         console.log (chalk.rgb(127, 246, 110)   ("           o88%8888888."));
@@ -54,10 +64,12 @@ const flags = () => {
     
         console.log (chalk.rgb(154, 246, 108).underline('No ingresaste nada,'));
         console.log (chalk.rgb(217, 3, 104).bgBlack('pero nuestra librería se ejecutó por defecto'));
-        return
-      } if (path.extname(process.argv[2]) === '.md') {
-        let route = process.argv[2];
-        searchMd;
+    console.log('ENTRO2');//CHARLIE//
+    return
+  } else if (path.extname(process.argv[2]) === '.md') {
+    validate= true
+    let route = process.argv[2];
+    mdLinks.mdLinks(validate).then(A=> console.log(A))
         console.log (chalk.rgb(242, 0, 137)   ("                  ____"));
         console.log (chalk.rgb(229, 0, 164)   ("                o8%8888,                           .-----."));
         console.log (chalk.rgb(219, 0, 182)   ("              o88%8888888.                       .'       `."));
@@ -76,19 +88,19 @@ const flags = () => {
         console.log (chalk.rgb(128, 255, 219) ("       /88:.__ ,       _%-' ---  -       /  :.__ ,       _%-' ---  -"));
         console.log (chalk.rgb(140, 255, 222) ("      '''::===..-'   =  --.  `          '''::===..-'   =  --.  `"));
         console.log('                       Es un archivo extension .md'.rainbow);
-        return
-      } else {
-        console.log(chalk.rgb(223, 18, 18)("=^..^=   =^..^=   =^..^=    =^..^=    =^..^=    =^..^=    =^..^="));
+    console.log('es un archivo extension .md');//CHARLIE//
+    return
+  } else {
+    console.log(chalk.rgb(223, 18, 18)("=^..^=   =^..^=   =^..^=    =^..^=    =^..^=    =^..^=    =^..^="));
         console.log(chalk.rgb(251, 86, 7)("=^..^=   =^..^=   =^..^=    =^..^=    =^..^=    =^..^=    =^..^="));
         console.log(chalk.rgb(255, 190, 11)("=^..^=   =^..^=   =^..^=    =^..^=    =^..^=    =^..^=    =^..^="));
         console.log(chalk.rgb(20, 96, 19).bgBlack("          Ingresa ruta de un directorio o archivo valido"));
         console.log(chalk.rgb(26, 157, 186)("=^..^=   =^..^=   =^..^=    =^..^=    =^..^=    =^..^=    =^..^="));
         console.log(chalk.rgb(28, 53, 187)("=^..^=   =^..^=   =^..^=    =^..^=    =^..^=    =^..^=    =^..^="));
         console.log(chalk.rgb(131, 56, 236)("=^..^=   =^..^=   =^..^=    =^..^=    =^..^=    =^..^=    =^..^="));
-        
-        return
-      }
+    console.log('Ingresa ruta de un directorio o archivo valido'.rainbow);
+    return
+  }
 }
-flags() 
-
+flags()
 
