@@ -23,32 +23,7 @@ const enterFolder = (route) => {
 };
 
 
-//Funcion que extrae links//
-
-/*const readSaveLinks = (e) => {
-const linksArchive = []
-return new Promise((resolve, reject) => {
-fs.readFile(e, 'utf-8', (err, data) => {
-if (err) {
-reject(err)
-} else {
-const allLinks = data.match(referencesLinks);
-allLinks.forEach(obj => {
-linksArchive.push({
-href: obj.split('](')[1].slice(0, -1),
-text: obj.split('](')[0].slice(1),
-file: e
-})
-})
-validateLinks(linksArchive)
-resolve(linksArchive)
-}
-})
-})
-};*/
-
 const mdLinks = (validate,stats) => {
-  //return Promise.resolve('AQUI')
   return new Promise((resolve, reject) => {
   enterFolder(path.resolve()).then(files => {
     files.forEach((file) => {
@@ -117,10 +92,9 @@ const statusLinks = (links) => {
     numOfLinks.push(element.href);
   });
   let uniqueLinks = new Set(numOfLinks);
-  console.log(
-    ' Total: ' + numOfLinks.length,
-    '\n', 'Unique: ' + uniqueLinks.size//CHARLIE//
-  );
+  console.log(`${chalk.rgb(244, 12, 179)('Total: ' + numOfLinks.length,)}\n`);
+  console.log(`${chalk.rgb(220, 70, 22)('Unique: ' + uniqueLinks.size)}\n`);  //CHARLIE//
+ 
 }
 
 const statusLinksBroken = (links) => {
@@ -147,7 +121,7 @@ const statusLinksBroken = (links) => {
     const countBroken= resolve.filter(link =>link.status!= 200)
     const linksBroken= [];
     linksBroken.push(countBroken.length)
-    console.log(' Broken: ',countBroken.length)//CHARLIE//
+    console.log(chalk.rgb(244, 12, 12)('Broken: ',countBroken.length));//CHARLIE//
   })
   };
 
