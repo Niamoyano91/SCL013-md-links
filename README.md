@@ -26,7 +26,7 @@ De acuerdo a las necesidades de nuestro cliente y nuestros usuarios, construimos
 Para instalar mdLinks, debes abrir tu terminal y escribir el siguiente comando:
 npm i charlie-nia-md-links
 Luego, para que puedas hacer uso de la librería:
-const mdLinks = require('./index')
+const mdLinks = require('charlie-nia-md-links')
 
 4. Herramientas
 
