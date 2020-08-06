@@ -5,18 +5,8 @@ const fetch = require("node-fetch");
 let stats = false;
 let validate = false;
 let help = false;
+const chalk = require('chalk');
 
-
-//Funcion Integradora que busca el archivo extension .md//
-/*const searchMd = () => {
-enterFolder(path.resolve()).then(files => {
-files.forEach((file) => {
-if (path.extname(file) === '.md') {
-(readSaveLinks(file))
-}
-})
-})
-};*/
 
 
 //funcion que entra en la carpeta//
@@ -80,19 +70,15 @@ const mdLinks = (validate,stats) => {
            if (validate === true && stats === true) {
             statusLinksBroken(linksArchive)
             statusLinks(linksArchive)
-            console.log('STATS')
             return
            }else if (validate === false && stats === false) {
-              console.log(validate)
               resolve(linksArchive);
               return 
             } else if (validate === true && stats === false) {
-              console.log('else if', validate)
               validateLinks(linksArchive).then(a=>console.log(a))
               return
             } else if (stats === true && validate === false) {
               statusLinks(linksArchive)
-              console.log('STATS')
               return
             } 
 
@@ -107,13 +93,15 @@ const mdLinks = (validate,stats) => {
 //valida el estado de los links//
 const validateLinks = (links) => {
   return new Promise((resolve, reject) => {
-    links.map(actualLink => {
-      //console.log(actualLink.href)
+    const filteredLinks = links.filter(link => link.href.includes('http'));
+    filteredLinks.map(actualLink => {
       fetch(actualLink.href)
         .then(response => {
-          console.log(response.url)
           if (response.status) {
-            resolve('Link: ' + actualLink.href + ' ' + 'Estado: ' + response.statusText + ' ' + response.status + '  ' + actualLink.text)//CHARLIE//
+            resolve
+            console.log(chalk.rgb(251, 153, 7).bgBlack('Link: ' + actualLink.href)); 
+            console.log(chalk.rgb(195, 39, 67).bgBlack('Estado: ' + response.statusText));
+            console.log(chalk.rgb(251, 86, 7).bgBlack(response.status));
           } else {
             reject(err)
           }
@@ -131,7 +119,7 @@ const statusLinks = (links) => {
   let uniqueLinks = new Set(numOfLinks);
   console.log(
     ' Total: ' + numOfLinks.length,
-    '\n', 'Unique: ' + uniqueLinks.size
+    '\n', 'Unique: ' + uniqueLinks.size//CHARLIE//
   );
 }
 
@@ -159,7 +147,7 @@ const statusLinksBroken = (links) => {
     const countBroken= resolve.filter(link =>link.status!= 200)
     const linksBroken= [];
     linksBroken.push(countBroken.length)
-    console.log(' Broken: ',countBroken.length)
+    console.log(' Broken: ',countBroken.length)//CHARLIE//
   })
   };
 
